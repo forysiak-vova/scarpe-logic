@@ -24,7 +24,7 @@ const scrapeLogic = async (res, id) => {
     // Navigate the page to a URL.
     //await page.goto('http://localhost:3005/draw3D');
     //const url = 'http://localhost/render3D/'+process.argv[2];
-    const url = 'https://draw3d.aneta-karol.pl/render3D/' + id;
+    const url = 'https://www.carport-system.tsc-demo.pl/render3D/' + id;
     
     await page.goto(url);
     await page.waitForSelector('#imageBase64', {
