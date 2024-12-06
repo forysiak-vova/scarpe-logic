@@ -1,14 +1,14 @@
-const puppeteer = require("puppeteer");
-require("dotenv").config();
+import { launch, executablePath as _executablePath } from "puppeteer";
+import 'dotenv/config'
 
 const scrapeLogic = async (res) => {
-  const browser = await puppeteer.launch({
+  const browser = await launch({
     args:['--use-gl=swiftshader','--no-sandbox'],
 
     executablePath:
       process.env.NODE_ENV === "production"
         ? process.env.PUPPETEER_EXECUTABLE_PATH
-        : puppeteer.executablePath(),
+        : _executablePath(),
   });
   try {
     const page = await browser.newPage();
@@ -25,14 +25,13 @@ const scrapeLogic = async (res) => {
     
       let element = await page.$('#imageBase64');
       let value = await page.evaluate(el => el.textContent, element)
-    console.log(value);
-    res.send(value);
+    res.end(value);
   } catch (e) {
     console.error(e);
-    res.send(`Something went wrong while running Puppeteer: ${e}`);
+    res.end(`Something went wrong while running Puppeteer: ${e}`);
   } finally {
     await browser.close();
   }
 };
 
-module.exports = { scrapeLogic };
+export default scrapeLogic;
