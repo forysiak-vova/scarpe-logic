@@ -3,7 +3,7 @@ import 'dotenv/config';
 import chromium from '@sparticuz/chromium';
 import puppeteerCore from 'puppeteer-core';
 
-const scrapeLogic = async (res) => {
+const scrapeLogic = async (res, id) => {
   // const browser = await launch({
     //args:['--use-gl=swiftshader','--no-sandbox'], 
 
@@ -24,7 +24,7 @@ const scrapeLogic = async (res) => {
     // Navigate the page to a URL.
     //await page.goto('http://localhost:3005/draw3D');
     //const url = 'http://localhost/render3D/'+process.argv[2];
-    const url = 'https://draw3d.aneta-karol.pl/render3D/1';
+    const url = 'https://draw3d.aneta-karol.pl/render3D/' + id;
     
     await page.goto(url);
     await page.waitForSelector('#imageBase64', {
