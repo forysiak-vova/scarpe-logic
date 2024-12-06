@@ -5,10 +5,10 @@ const scrapeLogic = async (res) => {
   const browser = await launch({
     args:['--use-gl=swiftshader','--no-sandbox'],
 
-    executablePath:
-      process.env.NODE_ENV === "production"
-        ? process.env.PUPPETEER_EXECUTABLE_PATH
-        : _executablePath(),
+    // executablePath:
+    //   process.env.NODE_ENV === "production"
+    //     ? process.env.PUPPETEER_EXECUTABLE_PATH
+    //     : _executablePath(),
   });
   try {
     const page = await browser.newPage();
