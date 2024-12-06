@@ -1,14 +1,22 @@
 import { launch, executablePath as _executablePath } from "puppeteer";
-import 'dotenv/config'
+import 'dotenv/config';
+import chromium from '@sparticuz/chromium';
+import puppeteerCore from 'puppeteer-core';
 
 const scrapeLogic = async (res) => {
-  const browser = await launch({
+  // const browser = await launch({
     //args:['--use-gl=swiftshader','--no-sandbox'], 
 
     // executablePath:
     //   process.env.NODE_ENV === "production"
     //     ? process.env.PUPPETEER_EXECUTABLE_PATH
     //     : _executablePath(),
+  // });
+  const browser = await puppeteerCore.launch({
+      args: chromium.args,
+      defaultViewport: chromium.defaultViewport,
+      executablePath: await chromium.executablePath(),
+      headless: chromium.headless,
   });
   try {
     const page = await browser.newPage();
