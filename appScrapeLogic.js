@@ -3,7 +3,7 @@ import 'dotenv/config'
 
 const scrapeLogic = async (res) => {
   const browser = await launch({
-    args:['--use-gl=swiftshader','--no-sandbox'],
+    //args:['--use-gl=swiftshader','--no-sandbox'], 
 
     // executablePath:
     //   process.env.NODE_ENV === "production"
